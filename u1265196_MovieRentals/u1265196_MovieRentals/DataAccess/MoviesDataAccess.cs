@@ -91,5 +91,36 @@ namespace u1265196_MovieRentals.DataAccess
 
 
         }
+
+        public bool UpdateMovie(Movies obj)
+        {
+
+            connection();
+            SqlCommand com = new SqlCommand("UpdateMovieDetails", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@MovieID", obj.MovieID);
+            com.Parameters.AddWithValue("@Title", obj.Title);
+            com.Parameters.AddWithValue("@Director", obj.Director);
+            com.Parameters.AddWithValue("@Genre", obj.Genre);
+            com.Parameters.AddWithValue("@Length", obj.Length);
+            com.Parameters.AddWithValue("@AgeRating", obj.AgeRating);
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+
+
+        }
     }
 }

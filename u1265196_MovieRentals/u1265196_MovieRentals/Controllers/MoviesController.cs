@@ -21,8 +21,6 @@ namespace u1265196_MovieRentals.Controllers
 
 
 
-
-
         // GET: Movies/Details/5
         public ActionResult Details(int id)
         {
@@ -63,20 +61,29 @@ namespace u1265196_MovieRentals.Controllers
     }
 
         // GET: Movies/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditMovie(int id)
         {
-            return View();
+            MoviesDataAccess MoviesDA = new MoviesDataAccess();
+
+
+
+            return View(MoviesDA.GetAllMovies().Find(Movies => Movies.MovieID == id));
+
         }
 
         // POST: Movies/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+
+        public ActionResult EditMovie(int id, Movies obj)
         {
             try
             {
-                // TODO: Add update logic here
+                MoviesDataAccess MoviesDA = new MoviesDataAccess();
 
-                return RedirectToAction("Index");
+                MoviesDA.UpdateMovie(obj);
+
+
+                return RedirectToAction("ViewMovies");
             }
             catch
             {

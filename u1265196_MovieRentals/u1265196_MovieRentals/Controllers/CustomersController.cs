@@ -105,6 +105,16 @@ namespace u1265196_AdWeb.Controllers
         }
 
 
+        //GET: CustomerDetails
+        public ActionResult CustomerDetails(int id)
+        {
+            CustomerDataAccess CustomerDA = new CustomerDataAccess();
+
+
+
+            return View(CustomerDA.GetAllCustomers().Find(Customers => Customers.CustomerID == id));
+
+        }
 
     }
 }

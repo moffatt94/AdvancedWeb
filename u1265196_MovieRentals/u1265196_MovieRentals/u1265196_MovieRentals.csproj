@@ -280,6 +280,7 @@
     <Content Include="Views\Movies\AddMovie.cshtml" />
     <Content Include="Views\Movies\ViewMovies.cshtml" />
     <Content Include="Views\Movies\EditMovie.cshtml" />
+    <Content Include="Views\Movies\MovieDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

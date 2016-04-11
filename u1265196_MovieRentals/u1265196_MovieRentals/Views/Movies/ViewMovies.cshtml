@@ -48,7 +48,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "EditMovie", new { id = item.MovieID }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "MovieDetails", new { id = item.MovieID }) |
             @Html.ActionLink("Delete", "DeleteMov", new { id = item.MovieID }, new { onclick = "return confirm('Are sure wants to delete?');" })
         </td>
     </tr>

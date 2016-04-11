@@ -22,9 +22,14 @@ namespace u1265196_MovieRentals.Controllers
 
 
         // GET: Movies/Details/5
-        public ActionResult Details(int id)
+        public ActionResult MovieDetails(int id)
         {
-            return View();
+            MoviesDataAccess MoviesDA = new MoviesDataAccess();
+
+
+
+            return View(MoviesDA.GetAllMovies().Find(Movies => Movies.MovieID == id));
+
         }
 
         // GET: Movies/Create

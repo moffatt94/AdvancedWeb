@@ -122,5 +122,32 @@ namespace u1265196_MovieRentals.DataAccess
 
 
         }
+
+        public bool DeleteMovie(int Id)
+        {
+
+            connection();
+            SqlCommand com = new SqlCommand("DeleteMovByID", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@MovieID", Id);
+
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+
+        }
+
     }
 }

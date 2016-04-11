@@ -98,14 +98,19 @@ namespace u1265196_MovieRentals.Controllers
         }
 
         // POST: Movies/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+       
+            public ActionResult DeleteMov(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                MoviesDataAccess MoviesDA = new MoviesDataAccess();
+                if (MoviesDA.DeleteMovie(id))
+                {
+                    ViewBag.AlertMsg = "Movie deleted successfully";
 
-                return RedirectToAction("Index");
+                }
+                return RedirectToAction("ViewMovies");
+
             }
             catch
             {

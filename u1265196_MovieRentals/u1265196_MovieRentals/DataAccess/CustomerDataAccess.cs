@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using u1265196_MovieRentals.Models;
 
-namespace u1265196_AdWeb.DataAccess
+namespace u1265196_MovieRentals.DataAccess
 {
     public class CustomerDataAccess
     {

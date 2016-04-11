@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using u1265196_MovieRentals.Models;
-using u1265196_AdWeb.DataAccess;
+using u1265196_MovieRentals.DataAccess;
 
-namespace u1265196_AdWeb.Controllers
+namespace u1265196_MovieRentals.Controllers
 {
 
     public class CustomersController : Controller

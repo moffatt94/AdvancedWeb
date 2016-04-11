@@ -52,9 +52,50 @@ namespace u1265196_AdWeb.DataAccess
         }
 
 
+        public List<Customers> GetAllCustomers()
+        {
+            connection();
+            List<Customers> CustomerList = new List<Customers>();
 
+
+            SqlCommand com = new SqlCommand("GetCustomers", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                CustomerList.Add(
+
+                    new Customers
+                    {
+
+                        CustomerID = Convert.ToInt32(dr["CustomerID"]),
+                        FirstName = Convert.ToString(dr["FirstName"]),
+                        LastName = Convert.ToString(dr["LastName"]),
+                        AddressLine1 = Convert.ToString(dr["AddressLine1"]),
+                        AddressLine2 = Convert.ToString(dr["AddressLine2"]),
+                        City = Convert.ToString(dr["City"]),
+                        Postcode = Convert.ToString(dr["Postcode"]),
+                        Phone = Convert.ToString(dr["Phone"])
+
+                    }
+
+
+                    );
+
+            }
+
+            return CustomerList;
+
+
+        }
 
 
 
     }
-}
+        }

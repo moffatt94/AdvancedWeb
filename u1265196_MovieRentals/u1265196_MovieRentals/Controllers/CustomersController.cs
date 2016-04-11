@@ -12,7 +12,15 @@ namespace u1265196_AdWeb.Controllers
     public class CustomersController : Controller
     {
 
+        // GET: Employee/GetAllEmpDetails
 
+        public ActionResult ViewCustomers()
+        {
+
+            CustomerDataAccess CustomerDA = new CustomerDataAccess();
+            ModelState.Clear();
+            return View(CustomerDA.GetAllCustomers());
+        }
 
         // GET: Add Customers
         public ActionResult AddCustomer()

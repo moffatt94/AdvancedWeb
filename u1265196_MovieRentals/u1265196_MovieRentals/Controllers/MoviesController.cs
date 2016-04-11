@@ -13,9 +13,15 @@ namespace u1265196_MovieRentals.Controllers
         // GET: Movies
         public ActionResult ViewMovies()
         {
-            
-            return View();
+            MoviesDataAccess MoviesDA = new MoviesDataAccess();
+            ModelState.Clear();
+            return View(MoviesDA.GetAllMovies());
+
         }
+
+
+
+
 
         // GET: Movies/Details/5
         public ActionResult Details(int id)

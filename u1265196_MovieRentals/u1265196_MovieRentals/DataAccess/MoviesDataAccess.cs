@@ -49,5 +49,47 @@ namespace u1265196_MovieRentals.DataAccess
 
 
         }
+
+        public List<Movies> GetAllMovies()
+        {
+            connection();
+            List<Movies> MovieList = new List<Movies>();
+
+
+            SqlCommand com = new SqlCommand("GetMovies", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+            foreach (DataRow dr in dt.Rows)
+            {
+
+                MovieList.Add(
+
+                    new Movies
+                    {
+
+                        MovieID = Convert.ToInt32(dr["MovieID"]),
+                        Title = Convert.ToString(dr["Title"]),
+                        Director = Convert.ToString(dr["Director"]),
+                        Genre = Convert.ToString(dr["Genre"]),
+                        Length = Convert.ToString(dr["Length"]),
+                        AgeRating = Convert.ToInt32(dr["AgeRating"])
+                        
+
+                    }
+
+
+                    );
+
+            }
+
+            return MovieList;
+
+
+        }
     }
 }

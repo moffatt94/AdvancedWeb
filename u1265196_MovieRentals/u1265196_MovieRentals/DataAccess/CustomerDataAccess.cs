@@ -95,6 +95,38 @@ namespace u1265196_AdWeb.DataAccess
 
         }
 
+        public bool UpdateCustomer(Customers obj)
+        {
+
+            connection();
+            SqlCommand com = new SqlCommand("UpdateCustomerDetails", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@CustomerID", obj.CustomerID);
+            com.Parameters.AddWithValue("@FirstName", obj.FirstName);
+            com.Parameters.AddWithValue("@LastName", obj.LastName);
+            com.Parameters.AddWithValue("@AddressLine1", obj.AddressLine1);
+            com.Parameters.AddWithValue("@AddressLine2", obj.AddressLine2);
+            com.Parameters.AddWithValue("@City", obj.City);
+            com.Parameters.AddWithValue("@Postcode", obj.Postcode);
+            com.Parameters.AddWithValue("@Phone", obj.Phone);
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+
+
+        }
 
 
     }

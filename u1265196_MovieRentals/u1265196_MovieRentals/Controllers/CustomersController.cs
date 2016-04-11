@@ -12,7 +12,7 @@ namespace u1265196_AdWeb.Controllers
     public class CustomersController : Controller
     {
 
-        // GET: Employee/GetAllEmpDetails
+        // GET: GetAllCustomers
 
         public ActionResult ViewCustomers()
         {
@@ -52,9 +52,36 @@ namespace u1265196_AdWeb.Controllers
             }
         }
 
-    
+        //GET: EditCustomer
+        public ActionResult EditCustomer(int id)
+        {
+            CustomerDataAccess CustomerDA = new CustomerDataAccess();
 
-       
+
+
+            return View(CustomerDA.GetAllCustomers().Find(Customers => Customers.CustomerID == id));
+
+        }
+
+        // POST: EdidCustomer
+        [HttpPost]
+
+        public ActionResult EditCustomer(int id, Customers obj)
+        {
+            try
+            {
+                CustomerDataAccess CustomerDA = new CustomerDataAccess();
+
+                CustomerDA.UpdateCustomer(obj);
+
+
+                return RedirectToAction("ViewCustomers");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
 
 

@@ -128,6 +128,32 @@ namespace u1265196_AdWeb.DataAccess
 
         }
 
+        public bool DeleteCustomer(int Id)
+        {
 
-    }
+            connection();
+            SqlCommand com = new SqlCommand("DeleteCustByID", con);
+
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@CustomerID", Id);
+
+            con.Open();
+            int i = com.ExecuteNonQuery();
+            con.Close();
+            if (i >= 1)
+            {
+
+                return true;
+
+            }
+            else
+            {
+
+                return false;
+            }
+
         }
+
+
+        }
+    }

@@ -84,6 +84,26 @@ namespace u1265196_AdWeb.Controllers
         }
 
 
+        // GET: DeleteCustomer
+        public ActionResult DeleteCust(int id)
+        {
+            try
+            {
+                CustomerDataAccess CustomerDA = new CustomerDataAccess();
+                if (CustomerDA.DeleteCustomer(id))
+                {
+                    ViewBag.AlertMsg = "Customer details deleted successfully";
+
+                }
+                return RedirectToAction("ViewCustomers");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
 
     }
